@@ -1,0 +1,21 @@
+name: $(Date:yyyyMMdd)$(Rev:.r)
+trigger:
+  branches:
+    include: &BRANCHES
+      - master
+      - latest
+schedules:
+  - cron: "0 */6 * * *"
+    displayName: Regular sync every 6 hours
+    branches:
+      include: *BRANCHES
+    always: true
+variables:
+  branches: *BRANCHES
+
+jobs:
+- job: 
+  workspace: 
+    clean: resources
+  steps:
+  - script: echo First step! && echo "$branches"
