@@ -5,19 +5,21 @@ trigger:
 
 jobs:
 - job: 
-  strategy:
-    maxParallel: 1
-    matrix:
-      sync_master_branch:
-        source_branch: master
-        target_repo: git@github.com:test-repo-tih/test-sync.git
-        target_branch: master
+  variables:
+    source_branch: master
+    target_endpoints: >
+      git@github.com:test-repo-tih/test-sync.git|master
+      git@github.com:test-repo-tih/test-sync.git|test
   workspace: 
     clean: resources
   steps:
   - script: |
       echo "Hello World!"
       echo "source_branch $(source_branch)"
-      echo "target_repo $(target_repo)"
-      echo "target_branch $(target_branch)"
+      echo "target_endpoints $(target_endpoints)"
+      git checkout $(source_branch)
+      for target in $(target_endpoints)
+      do
+        echo "TARGET $target"
+      done
   
