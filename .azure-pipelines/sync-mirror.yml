@@ -1,15 +1,14 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
-parameters:
-  branches: [master, latest]
-trigger:
-  branches:
-    include: [master, latest]
 schedules:
   - cron: "0 */6 * * *"
     displayName: Regular sync every 6 hours
     always: true
+trigger:
+  branches:
+    include: [master, latest]
+
 variables:
-  branches: ${{ parameters.branches }}
+  branches: [master, latest]
 
 jobs:
 - job: 
