@@ -1,18 +1,23 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
-schedules:
-  - cron: "0 */6 * * *"
-    displayName: Regular sync every 6 hours
-    always: true
 trigger:
   branches:
     include: [master, latest]
 
-variables:
-  branches: [master, latest]
-
 jobs:
 - job: 
+  strategy:
+    maxParallel: 1
+    matrix:
+      sync_master_branch:
+        source_branch: master
+        target_repo: git@github.com:test-repo-tih/test-sync.git
+        target_branch: master
   workspace: 
     clean: resources
   steps:
-  - script: echo First step! && echo "$branches"
+  - script: >
+      echo "Hello World!"
+      echo "source_branch $(source_branch)"
+      echo "target_repo $(target_repo)"
+      echo "target_branch $(target_branch)"
+  
