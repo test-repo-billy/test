@@ -21,7 +21,7 @@ jobs:
       git config user.name "azuresdkci"
       git config credential.helper store
 
-      echo https://$(Github-azuresdkci-personalaccesstoken):x-oauth-basic@github.com > ~/.git-credentials
+      echo https://$(github-pat):x-oauth-basic@github.com > ~/.git-credentials
 
       set -x
       git branch --no-track -f $SOURCE_BRANCH origin/$SOURCE_BRANCH
