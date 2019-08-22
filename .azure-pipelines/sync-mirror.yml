@@ -5,6 +5,7 @@ resources:
     - repository: mirror_template
       type: github
       name: test-repo-tih/test-mirror-repo-template
+      endpoint: test-repo-billy
 trigger:
   branches:
     include: [master, latest]
