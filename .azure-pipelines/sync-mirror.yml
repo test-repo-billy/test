@@ -35,10 +35,10 @@ jobs:
         echo "TARGET_BRANCH=$TARGET_BRANCH"
 
         set -x
-        git remote remove target
+        git remote remove target || true # avoid error if remote not exist for first time
         git remote add target $TARGET_REPO
         git push -f target origin/$SOURCE_BRANCH:refs/heads/$TARGET_BRANCH
         set +x
       done
 
-      return EXIT_CODE
+      exit $EXIT_CODE
