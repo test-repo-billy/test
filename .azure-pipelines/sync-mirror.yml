@@ -6,8 +6,8 @@ trigger:
 jobs:
 - job: 
   variables:
-    source_branch: master
-    target_endpoints: >
+    SOURCE_BRANCH: master
+    TARGET_ENDPOINTS: >
       git@github.com:test-repo-tih/test-sync.git!master
       git@github.com:test-repo-tih/test-sync.git!test
   workspace: 
@@ -16,14 +16,14 @@ jobs:
   - script: |
       set -x
       echo "Hello World!"
-      echo "source_branch $source_branch"
-      echo "target_endpoints $target_endpoints"
-      git branch --no-track -f $source_branch origin/$source_branch
-      for target in $target_endpoints
+      echo "SOURCE_BRANCH $SOURCE_BRANCH"
+      echo "TARGET_ENDPOINTS $TARGET_ENDPOINTS"
+      git branch --no-track -f $SOURCE_BRANCH origin/$SOURCE_BRANCH
+      for TARGET in $TARGET_ENDPOINTS
       do
-        echo "target $(target)"
-        target_repo=`echo $target | cut -d! -f 1 -`
-        target_branch=`echo $target | cut -d! -f 2 -`
-        echo "TARGET_REPO $target_repo"
-        echo "TARGET_BRANCH $target_branch"
+        echo "TARGET=$TARGET"
+        TARGET_REPO=`echo $TARGET | cut -d! -f 1 -`
+        TARGET_BRANCH=`echo $TARGET | cut -d! -f 2 -`
+        echo "TARGET_REPO=$TARGET_REPO"
+        echo "TARGET_BRANCH=$TARGET_BRANCH"
       done
