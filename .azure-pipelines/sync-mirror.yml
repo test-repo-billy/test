@@ -16,14 +16,14 @@ jobs:
   - script: |
       set -x
       echo "Hello World!"
-      echo "source_branch $(source_branch)"
-      echo "target_endpoints $(target_endpoints)"
-      git branch --no-track -f $(source_branch) origin/$(source_branch)
-      for target in $(target_endpoints)
+      echo "source_branch ${source_branch}"
+      echo "target_endpoints ${target_endpoints}"
+      git branch --no-track -f $source_branch origin/${source_branch}
+      for target in ${target_endpoints}
       do
-        echo "target $target"
-        target_repo=`echo $target | cut -d! -f 1 -`
-        target_branch=`echo $target | cut -d! -f 2 -`
-        echo "TARGET_REPO $(target_repo)"
-        echo "TARGET_BRANCH $(target_branch)"
+        echo "target ${target}"
+        target_repo=`echo ${target} | cut -d! -f 1 -`
+        target_branch=`echo ${target} | cut -d! -f 2 -`
+        echo "TARGET_REPO ${target_repo}"
+        echo "TARGET_BRANCH ${target_branch}"
       done
