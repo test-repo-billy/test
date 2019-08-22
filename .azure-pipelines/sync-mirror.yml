@@ -17,6 +17,12 @@ jobs:
     clean: resources
     persistCredentials: true
   - script: |
+      git config user.email "azuresdkci@microsoft.com"
+      git config user.name "azuresdkci"
+      git config credential.helper store
+
+      echo https://$(Github-azuresdkci-personalaccesstoken):x-oauth-basic@github.com > ~/.git-credentials
+
       set -x
       git branch --no-track -f $SOURCE_BRANCH origin/$SOURCE_BRANCH
       set +x
