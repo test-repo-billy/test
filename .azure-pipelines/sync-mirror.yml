@@ -11,9 +11,6 @@ trigger:
     include: [master, latest]
 
 jobs:
-- job: Env
-  steps:
-    - script: env
 - template: .azure-pipelines/mirror-template.yml@mirror_template
   parameters:
     SOURCE_BRANCH: master
