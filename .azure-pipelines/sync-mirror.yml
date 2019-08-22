@@ -22,8 +22,8 @@ jobs:
       for target in $(target_endpoints)
       do
         echo "target $target"
-        target_repo=`echo $(target) | cut -d! -f 1 -`
-        target_branch=`echo $(target) | cut -d! -f 2 -`
+        target_repo=`echo $target | cut -d! -f 1 -`
+        target_branch=`echo $target | cut -d! -f 2 -`
         echo "TARGET_REPO $(target_repo)"
         echo "TARGET_BRANCH $(target_branch)"
       done
