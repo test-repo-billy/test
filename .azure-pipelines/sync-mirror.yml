@@ -15,15 +15,20 @@ jobs:
   steps:
   - script: |
       set -x
-      echo "Hello World!"
-      echo "SOURCE_BRANCH $SOURCE_BRANCH"
-      echo "TARGET_ENDPOINTS $TARGET_ENDPOINTS"
       git branch --no-track -f $SOURCE_BRANCH origin/$SOURCE_BRANCH
+      set +x
+
       for TARGET in $TARGET_ENDPOINTS
       do
-        echo "TARGET=$TARGET"
         TARGET_REPO=`echo $TARGET | cut -d! -f 1 -`
         TARGET_BRANCH=`echo $TARGET | cut -d! -f 2 -`
         echo "TARGET_REPO=$TARGET_REPO"
         echo "TARGET_BRANCH=$TARGET_BRANCH"
+
+        set -x
+        git remote remove target
+        git remote add target $TARGET_REPO
+        git push -f target origin/$SOURCE_BRANCH:$TARGET_BRANCH
+        set +x
+
       done
