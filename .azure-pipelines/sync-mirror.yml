@@ -8,8 +8,8 @@ jobs:
   variables:
     SOURCE_BRANCH: master
     TARGET_ENDPOINTS: >
-      git@github.com:test-repo-tih/test-sync.git!master
-      git@github.com:test-repo-tih/test-sync.git!test
+      https://github.com/test-repo-tih/test-sync.git!master
+      https://github.com/test-repo-tih/test-sync.git!test
   workspace: 
     clean: resources
   steps:
@@ -17,13 +17,13 @@ jobs:
     clean: resources
     persistCredentials: true
   - script: |
+      set -x
       git config user.email "azuresdkci@microsoft.com"
       git config user.name "azuresdkci"
       git config credential.helper store
 
       echo https://$(github-pat):x-oauth-basic@github.com > ~/.git-credentials
 
-      set -x
       git branch --no-track -f $SOURCE_BRANCH origin/$SOURCE_BRANCH
       set +x
 
