@@ -5,6 +5,7 @@ resources:
     - repository: mirror_template
       type: github
       name: AzureSDKAutomation/repo-mirror-template
+      endpoint: Azure
 trigger:
   batch: true
   branches:
