@@ -1,3 +1,3 @@
 # test-sync
 
-test 7
+test 8
