@@ -14,6 +14,6 @@ trigger:
 jobs:
   - template: .azure-pipelines/job-mirror.yml@mirror_template
     parameters:
-      TARGET_ENDPOINTS: >
+      TARGET_ENDPOINTS: |
         https://github.com/test-repo-tih/test-sync.git!master
         https://github.com/test-repo-tih/test-sync.git!test
