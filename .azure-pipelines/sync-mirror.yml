@@ -4,8 +4,7 @@ resources:
   repositories:
     - repository: mirror_template
       type: github
-      name: test-repo-tih/test-mirror-repo-template
-      endpoint: test-repo-billy
+      name: AzureSDKAutomation/repo-mirror-template
 trigger:
   batch: true
   branches:
