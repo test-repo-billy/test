@@ -12,9 +12,10 @@ trigger:
     include: [master, latest]
 
 jobs:
-- template: .azure-pipelines/mirror-template.yml@mirror_template
-  parameters:
-    SOURCE_BRANCH: master
-    TARGET_ENDPOINTS: >
-      https://github.com/test-repo-tih/test-sync.git!master
-      https://github.com/test-repo-tih/test-sync.git!test
+- job: 
+  steps:
+    - template: .azure-pipelines/step-mirror.yml@mirror_template
+      parameters:
+        TARGET_ENDPOINTS: >
+          https://github.com/test-repo-tih/test-sync.git!master
+          https://github.com/test-repo-tih/test-sync.git!test
