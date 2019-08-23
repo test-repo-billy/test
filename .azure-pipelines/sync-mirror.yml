@@ -1,3 +1,5 @@
+name: Mirror Branch $(Build.SourceBranchName)
+
 resources:
   repositories:
     - repository: mirror_template
